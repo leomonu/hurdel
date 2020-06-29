@@ -24,7 +24,7 @@ function preload(){
 
   player4Img = loadImage("images/boy.png");
   trackImg = loadImage("images/tra.jpg");
-  gameOverImg = loadImage("images/gameOver.png");
+
 }
 
 
