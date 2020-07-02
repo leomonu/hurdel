@@ -60,9 +60,10 @@ class Game {
   
     play(){
       form.hide();
+      fill("blue");
 
-      hurdle = createSprite(10,10,10,100000);
-      hurdle1 = createSprite(-500,10,10,100000);
+      hurdle = createSprite(10,10,30,100000);
+      hurdle1 = createSprite(-500,10,30,100000);
   
       Player.getPlayerInfo();
   
@@ -118,7 +119,7 @@ class Game {
                 console.log('did not hit hurdel 1' );
               }
               else {
-                console.log("hit hurdel  1");
+                console.log("game over");
 
               }
             }
@@ -127,11 +128,9 @@ class Game {
               
               if(keyIsDown(RIGHT_ARROW)  ){
                 console.log('did not hit  hurdel 2' );
-                image("gameOver",gameOverImg);
               }
               else {
-                console.log("hit hurdel 2");
-                image(gameOverImg,displayWidth*3,displayWidth*2);
+                console.log("game over");
 
               }
             }
