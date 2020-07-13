@@ -38,6 +38,10 @@ class Game {
       player4 = createSprite(700,2000);
       player4.addImage("car4",player4Img);
       players = [player1, player2, player3, player4];
+      gameOver = createSprite(displayWidth/2-1400,displayHeight/2);
+      gameOver.addImage(gameOverImg);
+      gameOver.visible = false;
+      gameOver.depth =1000;
 
       
 
@@ -62,12 +66,14 @@ class Game {
       form.hide();
       fill("blue");
 
-      hurdle = createSprite(10,10,30,100000);
       hurdle1 = createSprite(-500,10,30,100000);
   
       Player.getPlayerInfo();
   
       player.getPlayersAtEnd();
+
+
+      
       
       if(allPlayers !== undefined){
   
@@ -92,6 +98,9 @@ class Game {
           y = y + 170;
           players[index-1].x = x;
           players[index-1].y = y;
+
+          
+         
   
           if (index === player.index){
             stroke(10);
@@ -111,31 +120,9 @@ class Game {
             // console.log('hurdle1 = ' + hurdle.x);
             // console.log('player = ' + players[index-1].x);
 
-            var playerx = players[index-1].x;
+            
 
-            if(playerx < hurdle.x && playerx > hurdle.x - 10){
-              
-              if(keyIsDown(RIGHT_ARROW)  ){
-                console.log('did not hit hurdel 1' );
-              }
-              else {
-                console.log("game over");
-
-              }
-            }
-
-            if(playerx < hurdle1.x && playerx > hurdle1.x - 10){
-              
-              if(keyIsDown(RIGHT_ARROW)  ){
-                console.log('did not hit  hurdel 2' );
-              }
-              else {
-                console.log("game over");
-
-              }
-            }
-
-
+            
           }
           
           
@@ -159,21 +146,27 @@ class Game {
         player.distance +=10
         player.update();
       }
+
       
-      if(player.distance>4000 && flag === 0){
-        
-        player.rank+=1;
-        Player.updatePlayersAtEnd(player.rank);
-        gameState = 2;
-        flag = 1;
-      }
+      
+      
+      
+      // console.log(players[index-1]);
+      // console.log(hurdle1);
+      
+      if(players && players[index-1] && players[index-1].x <= hurdle1.x  ){
+            gameState = 2;
+      console.log("win");
+     
+          }
   
       drawSprites();
     }
     end(){
       console.log("gameOver");
       game.update(2);
-  
+      
+      gameOver.visible = true;
       console.log(player.rank);
     }
   }

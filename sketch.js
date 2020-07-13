@@ -12,8 +12,9 @@ var form, player, game;
 var players, player1, player2, player3, player4;
 var hurdle,hurdle1;
 
+
 var car1Img,car2Img,car3Img,car4Img,trackImg;
-var gameOverImg
+var gameOver,gameOverImg;
 
 var flag = 0;
 
@@ -24,6 +25,7 @@ function preload(){
 
   player4Img = loadImage("images/boy.png");
   trackImg = loadImage("images/tra.jpg");
+  gameOverImg = loadImage("images/gameOver.png");
 
 }
 
@@ -41,7 +43,7 @@ function setup() {
 }
 
 function draw() {
- 
+  
   if(playerCount === 4){
     game.update(1);
   }
